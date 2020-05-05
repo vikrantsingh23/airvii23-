@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "949291288580",
+    "firebase_url": "https://flyb-c5519.firebaseio.com",
+    "project_id": "flyb-c5519",
+    "storage_bucket": "flyb-c5519.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949291288580:android:9b51d34224736702654d51",
+        "android_client_info": {
+          "package_name": "com.example.fly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949291288580-t0nlaqomdsnt2p3i116fe3pjqmb490ao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc9VqLf4u4apWXXYTpVHVolBhjUK74e5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949291288580-t0nlaqomdsnt2p3i116fe3pjqmb490ao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
