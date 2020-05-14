@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home">
-
-    <WebView
-        android:id="@+id/web2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-30dp"
-        tools:layout_editor_absoluteY="-238dp" />
-
+    tools:context=".twoway">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:orientation="vertical"
     tools:context=".menu">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card2"
+        android:layout_width="348dp"
+        android:layout_height="294dp"
+        android:layout_marginTop="300sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.694">
 
-    <WebView
-        android:id="@+id/web"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="178dp"
+                android:layout_height="match_parent"
+                android:background="#3B9C27B0"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView52"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:text="ORIGIN"
+                    android:textColor="#222121"
+                    android:textSize="24sp" />
 
+                <TextView
+                    android:id="@+id/textView50"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:text="DESTINATION"
+                    android:textColor="#100F0F"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:text="DATE"
+                    android:textColor="#1E1D1D"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView49"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:text="TIME"
+                    android:textColor="#171616"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView47"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:text="AMOUNT"
+                    android:textColor="#151414"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="182dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/origin6"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:textColor="#1E1D1D" />
+
+                <TextView
+                    android:id="@+id/des6"
+                    android:layout_width="182dp"
+                    android:layout_height="52dp"
+                    android:textColor="#0C0C0C" />
+
+                <TextView
+                    android:id="@+id/date6"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="#0E0E0E" />
+
+                <TextView
+                    android:id="@+id/time6"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:textColor="#252323" />
+
+                <TextView
+                    android:id="@+id/amount6"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:textColor="#100F0F" />
+
+                <Button
+                    android:id="@+id/book1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#6837E33D"
+                    android:text="BOOK"
+                    android:textColor="#1B1A1A"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="355dp"
+        android:layout_height="305dp"
+        android:layout_marginTop="1sp"
+        android:layout_marginBottom="200sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:background="#3B9C27B0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:text="ORIGIN"
+                    android:textColor="#171616"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:text="DESTINATION"
+                    android:textColor="#191818"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:text="DATE"
+                    android:textColor="#131313"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="TIME"
+                    android:textColor="#151414"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:text="AMOUNT"
+                    android:textColor="#1C1C1C"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="187dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/origin5"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:textColor="#121111"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/des5"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:textColor="#121111"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/date5"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:textColor="#100F0F" />
+
+                <TextView
+                    android:id="@+id/time5"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textColor="#131212"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/amount5"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:textColor="#1B1A1A" />
+
+                <Button
+                    android:id="@+id/book"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:background="#6837E33D"
+                    android:text="BOOK"
+                    android:textColor="#1B1A1A"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

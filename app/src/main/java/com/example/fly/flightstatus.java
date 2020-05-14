@@ -4,12 +4,10 @@ package com.example.fly;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,14 +20,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -42,13 +37,13 @@ import java.util.Map;
 public class flightstatus extends AppCompatActivity {
 
 
-    Spinner spinorigin, spindestination, spintime;
+    Spinner spinorigin, spindestination;
     FirebaseFirestore store;
-
-
-
+    TextView datetext;
+    Calendar c;
+    DatePickerDialog picker;
     Button flightstatus;
-    ImageView back;
+
 
     // ProgressDialog progressDialog;
 
@@ -59,24 +54,37 @@ public class flightstatus extends AppCompatActivity {
         setContentView(R.layout.activity_flightstatus);
 
 
-        spinorigin = findViewById(R.id.origin);
+        spinorigin = findViewById(R.id.o);
 
-        spindestination = findViewById(R.id.destination);
+        spindestination = findViewById(R.id.destination1);
+        datetext = findViewById(R.id.date1);
 
 
-        back = findViewById(R.id.back);
         flightstatus = findViewById(R.id.check);
 
 
-        back.setOnClickListener(new View.OnClickListener() {
+        datetext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                c = Calendar.getInstance();
+                int day;
+                day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
 
-                startActivity(new Intent(flightstatus.this, menu.class));
-                finish();
+                picker = new DatePickerDialog(flightstatus.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int myear, int mmonth, int mdayOfMonth) {
 
+                        datetext.setText(mdayOfMonth + "/" + (mmonth + 1) + "/" + myear);
+
+                    }
+                }, day, month, year);
+                picker.show();
             }
         });
+
+
 
 
 
@@ -84,13 +92,11 @@ public class flightstatus extends AppCompatActivity {
 
         List<String> list = new ArrayList<String>();
 
+        list.add("Mumbai-Chhatrapati shivaji international airport ");
+        list.add("Delhi-Indira gandhi international airport");
+        list.add("Bhopal-Raja bhoj international airport");
+        list.add("Dehli-Indira gandhi international airport");
 
-        list.add("Delhi");
-        list.add("Goa");
-        list.add("Banglore");
-        list.add("Gujarat");
-        list.add("Assam");
-        list.add("Mumbai");
 
         ArrayAdapter<String> arrayadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
 
@@ -104,13 +110,10 @@ public class flightstatus extends AppCompatActivity {
         List<String> list1 = new ArrayList<String>();
 
 
-        list1.add("Goa");
-        list1.add("Delhi");
-        list1.add("Banglore");
-        list1.add("Gujarat");
-        list1.add("Assam");
-        list1.add("Mumbai");
-
+        list1.add("Delhi-Indira gandhi international airport");
+        list1.add("Chennai-Chennai international airport");
+        list1.add("Agra-Kheria airport");
+        list1.add("Ahmedabad-Sardar vallabhbhai international airport");
         // Creating adapter for spinner
         ArrayAdapter<String> arrayadapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list1);
 
@@ -121,67 +124,57 @@ public class flightstatus extends AppCompatActivity {
         spindestination.setAdapter(arrayadapter1);
 
 
-        flightstatus.setOnClickListener(new View.OnClickListener(){
+        flightstatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String destination = spindestination.getSelectedItem().toString();
+                String origin = spinorigin.getSelectedItem().toString();
 
 
-        @Override
-        public void onClick (View v){
-            DocumentReference docRef = store.collection("flight1").document("booking");
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                             String origin=document.getString("origin");
-                            String destination=document.getString("destination");
-                            String time =document.getString("time");
-                            AlertDialog.Builder builder = new AlertDialog.Builder(flightstatus.this);
 
-                            builder.setMessage("origin" + ":" + origin + "\n "
-                                    + "destination" + ":" + destination + " "
-                                    + "time" + ":" + time);
+                CollectionReference collectionrefernce = store.collection("flight available");
+                String date = datetext.getText().toString().trim();
 
+                collectionrefernce
+                        .whereEqualTo("origin", origin)
+                        .whereEqualTo("destination",destination)
+                        .whereEqualTo("day",date)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
 
-                            // Set Alert Title
-                            builder.setTitle("");
+                                        String date = datetext.getText().toString().trim();
 
 
-                            builder.setCancelable(false);
-
-                            builder.setPositiveButton(
-                                    "Ok",
-                                    new DialogInterface
-                                            .OnClickListener() {
-
-                                        @Override
-                                        public void onClick(DialogInterface dialog,
-                                                            int which) {
-                                            startActivity(new Intent(flightstatus.this, menu.class));
-                                            finish();
 
 
-                                        }
-                                    });
+                                        Intent intent;
+                                        intent = new Intent(flightstatus.this,flightavailable.class);
+                                        intent.putExtra("id", document.getString("id"));
+
+                                        intent.putExtra("date",date);
+                                        startActivity(intent);
 
 
-                            // Create the Alert dialog
-                            AlertDialog alertDialog = builder.create();
+                                    }
+                                } else {
+                                    startActivity(new Intent(flightstatus.this, connect.class));
+                                    finish();
+
+                                }
+                            }
+                        });
 
 
-                            alertDialog.show();
 
 
-                        }
 
 
-                        }
 
-                }
-            });
-
-
-    }
+            }
 
 
     });

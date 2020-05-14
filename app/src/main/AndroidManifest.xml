@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fly"
-    >
+    android:screenOrientation="fullSensor">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,27 +13,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".menu1"
-            ></activity>
-        <activity android:name=".login1" />
-        <activity android:name=".register1" />
-        <activity android:name=".home1" />
-        <activity android:name=".language" />
-        <activity android:name=".flightstatus" />
-        <activity android:name=".boardingpass" />
-        <activity android:name=".aboutus" />
-        <activity android:name=".checkin" />
-        <activity android:name=".contactus" />
-        <activity android:name=".gpay" />
+        <activity android:name=".twoway"></activity>
         <activity android:name=".modify" />
-        <activity android:name=".manage" />
-        <activity android:name=".booking" />
-        <activity android:name=".menu" />
-        <activity android:name=".login" />
-        <activity android:name=".register" />
-        <activity android:name=".home" />
-        <activity android:name=".MainActivity"
-            >
+        <activity android:name=".connect" />
+        <activity
+            android:name=".menu"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".flightavailable"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".search"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".flightstatus"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".boardingpass"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".aboutus"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".checkin"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".contactus"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".gpay"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".manage"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".login"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".register"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

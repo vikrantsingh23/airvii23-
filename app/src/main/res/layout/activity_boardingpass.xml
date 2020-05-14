@@ -4,208 +4,187 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFDFAFA"
+    android:background="#FFFFFF"
     tools:context=".boardingpass">
 
-    <Button
-        android:id="@+id/screen"
-        android:layout_width="129dp"
-        android:layout_height="56dp"
-        android:text="BACK"
-        android:textSize="24sp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="346dp"
+        android:layout_height="511dp"
+        android:layout_marginTop="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.923" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/seat"
-        android:layout_width="194dp"
-        android:layout_height="49dp"
-        android:background="#FFFFFF"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.799" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        android:background="#FFFFFF"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.584" />
+            <LinearLayout
+                android:layout_width="195dp"
+                android:layout_height="match_parent"
+                android:background="#AC18C6"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="94dp"
-        android:layout_height="45dp"
-        android:background="#FFFFFF"
-        android:text="Date"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" Name"
+                    android:textColor="#131313"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="94dp"
-        android:layout_height="45dp"
-        android:background="#FFFFFF"
-        android:text="Seat"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" Origin"
+                    android:textColor="#191B19"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="160dp"
-        android:layout_height="49dp"
-        android:background="#FFFFFF"
-        android:text="Boarding time"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" Destination"
+                    android:textColor="#181918"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="94dp"
-        android:layout_height="45dp"
-        android:background="#FFFFFF"
-        android:text="Origin"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" Date"
+                    android:textColor="#131313"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="94dp"
-        android:layout_height="45dp"
-        android:background="#FFFFFF"
-        android:text="Name"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" Boarding time"
+                    android:textColor="#181918"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/destination"
-        android:layout_width="157dp"
-        android:layout_height="44dp"
-        android:background="#FFFFFF"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="71dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" Seat"
+                    android:textColor="#1A1B1A"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="165dp"
-        android:layout_height="41dp"
-        android:background="#FFFFFF"
-        android:text="Destination"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="71dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" FLIGHT NO"
+                    android:textColor="#1A1B1A"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        android:background="#FFFFFF"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="71dp"
+                    android:background="#C4F7CBFF"
+                    android:text=" CLASS"
+                    android:textColor="#1A1B1A"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/origin"
-        android:layout_width="194dp"
-        android:layout_height="49dp"
-        android:background="#FFFFFF"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+            <LinearLayout
+                android:layout_width="183dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/boardingtime"
-        android:layout_width="157dp"
-        android:layout_height="49dp"
-        android:background="#FFFFFF"
-        android:textColor="#FA0F0101"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.986"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/o"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/destination1"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/date1"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/boardingtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/seat"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/flightno"
+                    android:layout_width="match_parent"
+                    android:layout_height="73dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/class1"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:background="#FFFFFF"
+                    android:textColor="#FA0F0101"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="287dp"
         android:layout_height="51dp"
-        android:background="#1E9C27B0"
         android:text="BOARDING PASS"
-        android:textColor="#FA090000"
+        android:textColor="#B920D3"
+        android:textColorHint="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.274"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.044" />
 </androidx.constraintlayout.widget.ConstraintLayout>

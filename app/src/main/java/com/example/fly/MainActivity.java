@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(MainActivity.this, language.class));
+                startActivity(new Intent(MainActivity.this, register.class));
                 finish();
             }
         }, SPLASH_TIME_OUT);

@@ -10,41 +10,43 @@
         android:id="@+id/modifydetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#4D8BC34A"
+        android:background="#B39C27B0"
         android:text="Modify Booking Details"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.486" />
+        app:layout_constraintVertical_bias="0.452" />
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
         android:text="Manage Booking"
-        android:textColor="#DA948D8D"
+        android:textColor="#4CAF50"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <Button
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#4D8BC34A"
+        android:background="#BA9C27B0"
         android:text="Cancel Booking"
+        android:textColor="#FFFCFC"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
+        app:layout_constraintVertical_bias="0.301" />
 </androidx.constraintlayout.widget.ConstraintLayout>

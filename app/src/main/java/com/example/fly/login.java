@@ -30,7 +30,7 @@ public class login extends AppCompatActivity {
     TextView textloginview;
      private FirebaseAuth mauth;
     ProgressDialog p;
-    ImageView back;
+
     Button login;
 
     @Override
@@ -47,16 +47,7 @@ public class login extends AppCompatActivity {
         textloginview=findViewById(R.id.logintextview) ;
         login = findViewById(R.id.login);
 
-        back = findViewById(R.id.back);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(login.this,menu.class));
-                finish();
-
-            }
-        });
 
         textloginview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,8 +93,8 @@ public class login extends AppCompatActivity {
         p= new ProgressDialog(this);
         p.setMessage("Logging In.....");
     }
-    public void loginUser(String emailinput, String passwordinput) {
-//         show progress dialog
+    public void loginUser(final String emailinput, String passwordinput) {
+
         p.show();
 
         mauth.signInWithEmailAndPassword(emailinput, passwordinput)
@@ -111,14 +102,15 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success ,dismiss dialog and start register activity
+
                             p.dismiss();
                             FirebaseUser user= mauth.getCurrentUser();
-                            //user is logged in,so start loginactivity
-                            startActivity(new Intent(login.this, home.class));
-                            finish();
 
-
+                      String email=emailinput;
+                            Intent intent;
+                            intent = new Intent(login.this,connect.class);
+                            intent.putExtra("email", email);
+                            startActivity(intent);
                         } else {
                             p.dismiss();
                             AlertDialog.Builder builder= new AlertDialog.Builder(login.this);
@@ -149,14 +141,10 @@ public class login extends AppCompatActivity {
                                         }
                                     });
 
-                            // Set the Negative button with No name
-                            // OnClickListener method is use
-                            // of DialogInterface interface.
 
-                            // Create the Alert dialog
                             AlertDialog alertDialog = builder.create();
 
-                            // Show the Alert Dialog box
+
                             alertDialog.show();
 
 

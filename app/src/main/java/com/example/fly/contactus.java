@@ -10,14 +10,13 @@ import android.os.Bundle;
 
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import android.app.ProgressDialog;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
+
 
 import android.view.View;
 
@@ -25,8 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -46,18 +44,10 @@ public class contactus extends AppCompatActivity {
         setContentView(R.layout.activity_contactus);
         query = findViewById(R.id.query1);
         submit = findViewById(R.id.button1);
-        back=findViewById(R.id.back);
 
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                startActivity(new Intent(contactus.this, menu.class));
-                finish();
 
-            }
-        });
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Sending..");
@@ -76,6 +66,7 @@ public class contactus extends AppCompatActivity {
 
 
                         Map<String, Object> book = new HashMap<>();
+                        String email=  getIntent().getStringExtra("email");
 
                         String str = query.getText().toString().trim();
 
@@ -84,7 +75,7 @@ public class contactus extends AppCompatActivity {
                         book.put("query", str);
 
 
-                        store.collection("flight").document("feeedback")
+                        store.collection("registration").document("details"+"->"+email)
                                 .set(book);
 
                         progressDialog.dismiss();
@@ -107,7 +98,7 @@ public class contactus extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
-                                        startActivity(new Intent(contactus.this, menu.class));
+                                        startActivity(new Intent(contactus.this, search.class));
                                         finish();
 
 

@@ -51,16 +51,23 @@ public class manage extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String email= getIntent().getStringExtra("email");
                 Map<String, Object> book = new HashMap<>();
 
-                book.put("name", "            ");
-                book.put("password", "         ");
-                book.put("email", "            ");
-                book.put("phoneno", "          ");
+                book.put("origin", "            ");
+                book.put("destination", "         ");
+                book.put("day", "            ");
+                book.put("time", "          ");
                 book.put("seat", "          ");
+                book.put("flightnumber", "          ");
+                book.put("adult", "          ");
+                book.put("children", "          ");
+                book.put("infants", "          ");
+                book.put("class", "          ");
+                book.put("price", "          ");
 
-                db.collection("flight").document("booking")
+
+                db.collection("registration").document("details"+"->"+email)
                         .set(book);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(manage.this);
@@ -81,7 +88,7 @@ public class manage extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-                                startActivity(new Intent(manage.this, menu.class));
+                                startActivity(new Intent(manage.this, connect.class));
                                 finish();
 
                             }

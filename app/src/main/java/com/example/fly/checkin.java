@@ -10,43 +10,39 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class checkin extends AppCompatActivity {
-     FirebaseFirestore store;
+import static java.util.logging.Logger.getGlobal;
+import static java.util.logging.Logger.global;
 
-// static int count1=0;
-  //  static int count2=0;
-   Button one,proceed,two,three;
-     // three, four, five, six, seven, eight, nine, ten, eleven, proceed, twelve;
-     //ProgressDialog progressDialog;
+public class checkin extends AppCompatActivity {
+    FirebaseFirestore store;
+
+
+    ImageView one, two, three, four;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
-    //    store = FirebaseFirestore.getInstance();
+        store = FirebaseFirestore.getInstance();
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
-       // progressDialog = new ProgressDialog(this);
-        //progressDialog.setMessage("checkin...");
+
         three = findViewById(R.id.three);
-      /*  four = findViewById(R.id.four);
-        five = findViewById(R.id.five);
-        six = findViewById(R.id.six);
-        seven = findViewById(R.id.seven);
-        eight = findViewById(R.id.eight);
-        nine = findViewById(R.id.nine);
-        ten = findViewById(R.id.ten);
-        eleven = findViewById(R.id.eleven);
-        twelve = findViewById(R.id.twelve);*/
-        proceed = findViewById(R.id.proceed);
+        four = findViewById(R.id.four);
+
+
         store = FirebaseFirestore.getInstance();
+
+      //  String email = getIntent().getStringExtra("email");
 
 
         one.setOnClickListener(new View.OnClickListener() {
@@ -56,15 +52,10 @@ public class checkin extends AppCompatActivity {
                 if (v.getId() == R.id.one) {
 
 
-                    Map<String, Object> book = new HashMap<>();
-
-                    book.put("seat", "1");
-
-                    store.collection("flight").document("booking").set(book);
                     AlertDialog.Builder builder = new AlertDialog.Builder(checkin.this);
 
 
-                    builder.setMessage("confirm seat number 1");
+                    builder.setMessage("confirm seat number 1-A");
 
                     builder.setTitle("");
 
@@ -80,36 +71,42 @@ public class checkin extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
 
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(checkin.this);
+
+                                    String email = getIntent().getStringExtra("email");
+                                    String origin = getIntent().getStringExtra("origin");
+                                    String destination = getIntent().getStringExtra("destination");
+                                    String time= getIntent().getStringExtra("time");
+                                    Map<String, Object> book = new HashMap<>();
+
+                                    book.put("seat[0]", " 1-A");
+
+                                    store.collection("registration").document("details" + "->" + email).set(book);
+                                    Intent intent;
+                                    intent = new Intent(checkin.this,boardingpass.class);
+                                    intent.putExtra("origin", origin);
+                                    intent.putExtra("time", time);
+
+                                    intent.putExtra("destination", destination);
+                                    intent.putExtra("email", email);
+                                    startActivity(intent);
 
 
-                                    builder.setMessage("checkin done.");
-
-                                    builder.setTitle("");
-
-
-                                    builder.setCancelable(false);
-
-                                    builder.setPositiveButton(
-                                            "Ok",
-                                            new DialogInterface
-                                                    .OnClickListener() {
-
-                                                @Override
-                                                public void onClick(DialogInterface dialog,
-                                                                    int which) {
-
-                                                    startActivity(new Intent(checkin.this, boardingpass.class));
-                                                    finish();
-
-                                                }
-                                            });
+                                }
+                            });
 
 
-                                    AlertDialog alertDialog = builder.create();
+                    builder.setCancelable(false);
 
-                                    alertDialog.show();
+                    builder.setNegativeButton(
+                            "No",
+                            new DialogInterface
+                                    .OnClickListener() {
 
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    startActivity(new Intent(checkin.this, checkin.class));
+                                    finish();
 
                                 }
                             });
@@ -120,27 +117,9 @@ public class checkin extends AppCompatActivity {
                     alertDialog.show();
 
 
-
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         two.setOnClickListener(new View.OnClickListener() {
@@ -150,15 +129,10 @@ public class checkin extends AppCompatActivity {
                 if (v.getId() == R.id.two) {
 
 
-                    Map<String, Object> book = new HashMap<>();
-
-                    book.put("seat", "2");
-
-                    store.collection("flight").document("booking").set(book);
                     AlertDialog.Builder builder = new AlertDialog.Builder(checkin.this);
 
 
-                    builder.setMessage("confirm seat number 2");
+                    builder.setMessage("confirm seat number 1-B");
 
                     builder.setTitle("");
 
@@ -174,36 +148,43 @@ public class checkin extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
 
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(checkin.this);
+                                    String origin = getIntent().getStringExtra("origin");
+                                    String destination = getIntent().getStringExtra("destination");
+
+                                    String email = getIntent().getStringExtra("email");
+                                    String time= getIntent().getStringExtra("time");
 
 
-                                    builder.setMessage("checkin done.");
 
-                                    builder.setTitle("");
+                                    Map<String, Object> book = new HashMap<>();
 
+                                    book.put("seat[1]", " 1-B");
 
-                                    builder.setCancelable(false);
-
-                                    builder.setPositiveButton(
-                                            "Ok",
-                                            new DialogInterface
-                                                    .OnClickListener() {
-
-                                                @Override
-                                                public void onClick(DialogInterface dialog,
-                                                                    int which) {
-
-                                                    startActivity(new Intent(checkin.this, boardingpass.class));
-                                                    finish();
-
-                                                }
-                                            });
+                                    store.collection("registration").document("details" + "->" + email).set(book);
+                                    Intent intent;
+                                    intent = new Intent(checkin.this,boardingpass.class);
+                                    intent.putExtra("email", email);
+                                    intent.putExtra("time", time);
+                                    intent.putExtra("origin", origin);
+                                    intent.putExtra("destination", destination);
+                                    startActivity(intent);
 
 
-                                    AlertDialog alertDialog = builder.create();
+                                }
+                            });
 
-                                    alertDialog.show();
+                    builder.setCancelable(false);
 
+                    builder.setNegativeButton(
+                            "No",
+                            new DialogInterface
+                                    .OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    startActivity(new Intent(checkin.this, checkin.class));
+                                    finish();
 
                                 }
                             });
@@ -212,7 +193,6 @@ public class checkin extends AppCompatActivity {
                     AlertDialog alertDialog = builder.create();
 
                     alertDialog.show();
-
 
 
                 }
@@ -227,15 +207,10 @@ public class checkin extends AppCompatActivity {
                 if (v.getId() == R.id.three) {
 
 
-                    Map<String, Object> book = new HashMap<>();
-
-                    book.put("seat", "3");
-
-                    store.collection("flight").document("booking").set(book);
                     AlertDialog.Builder builder = new AlertDialog.Builder(checkin.this);
 
 
-                    builder.setMessage("confirm seat number 3");
+                    builder.setMessage("confirm seat number 2-A");
 
                     builder.setTitle("");
 
@@ -250,37 +225,40 @@ public class checkin extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
+                                    String origin = getIntent().getStringExtra("origin");
+                                    String destination = getIntent().getStringExtra("destination");
 
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(checkin.this);
+                                    String time= getIntent().getStringExtra("time");
+                                    String email = getIntent().getStringExtra("email");
+                                    Map<String, Object> book = new HashMap<>();
 
+                                    book.put("seat[2]", " 2-A");
 
-                                    builder.setMessage("checkin done.");
+                                    store.collection("registration ").document("details" + "->" + email).set(book);
+                                    Intent intent;
+                                    intent = new Intent(checkin.this,boardingpass.class);
+                                    intent.putExtra("email", email);
+                                    intent.putExtra("time", time);
+                                    intent.putExtra("origin", origin);
+                                    intent.putExtra("destination", destination);
+                                    startActivity(intent);
 
-                                    builder.setTitle("");
-
-
-                                    builder.setCancelable(false);
-
-                                    builder.setPositiveButton(
-                                            "Ok",
-                                            new DialogInterface
-                                                    .OnClickListener() {
-
-                                                @Override
-                                                public void onClick(DialogInterface dialog,
-                                                                    int which) {
-
-                                                    startActivity(new Intent(checkin.this, boardingpass.class));
-                                                    finish();
-
-                                                }
-                                            });
+                                }
+                            });
 
 
-                                    AlertDialog alertDialog = builder.create();
+                    builder.setCancelable(false);
 
-                                    alertDialog.show();
+                    builder.setNegativeButton(
+                            "No",
+                            new DialogInterface
+                                    .OnClickListener() {
 
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    startActivity(new Intent(checkin.this, checkin.class));
+                                    finish();
 
                                 }
                             });
@@ -291,29 +269,83 @@ public class checkin extends AppCompatActivity {
                     alertDialog.show();
 
 
+                }
+            }
+        });
+        four.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (v.getId() == R.id.four) {
+
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(checkin.this);
+
+
+                    builder.setMessage("confirm seat number 2-B");
+
+                    builder.setTitle("");
+
+
+                    builder.setCancelable(false);
+
+                    builder.setPositiveButton(
+                            "Ok",
+                            new DialogInterface
+                                    .OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    String origin = getIntent().getStringExtra("origin");
+                                    String destination = getIntent().getStringExtra("destination");
+
+                                    String time= getIntent().getStringExtra("time");
+                                    String email = getIntent().getStringExtra("email");
+                                    Map<String, Object> book = new HashMap<>();
+
+                                    book.put("seat[3]", " 2-B");
+
+                                    store.collection("registration").document("details" + "->" + email).set(book);
+
+                                    Intent intent;
+                                    intent = new Intent(checkin.this,boardingpass.class);
+                                    intent.putExtra("email", email);
+                                    intent.putExtra("origin", origin);
+                                    intent.putExtra("time", time);
+                                    intent.putExtra("destination", destination);
+                                    startActivity(intent);
+
+                                }
+                            });
+
+
+                    builder.setCancelable(false);
+
+                    builder.setNegativeButton(
+                            "No",
+                            new DialogInterface
+                                    .OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    startActivity(new Intent(checkin.this, checkin.class));
+                                    finish();
+
+                                }
+                            });
+
+
+                    AlertDialog alertDialog = builder.create();
+
+                    alertDialog.show();
+
 
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
 }
+

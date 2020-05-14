@@ -36,8 +36,8 @@ public  class register extends AppCompatActivity {
 
     EditText nameview, emailview, passwordview, phoneNumberview;
 
-    ImageView back;
-    Button register;
+
+    Button register,login;
 
     ProgressDialog progressDialog;
 
@@ -57,22 +57,22 @@ public  class register extends AppCompatActivity {
         mAuth=  FirebaseAuth.getInstance();
         store=FirebaseFirestore.getInstance();
         phoneNumberview = findViewById(R.id.phone);
-        back = findViewById(R.id.back);
-        register = findViewById(R.id.register);
 
+        register = findViewById(R.id.register);
+        login = findViewById(R.id.login);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Registering...");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                startActivity(new Intent(register.this, home.class));
-                finish();
+        login.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            startActivity(new Intent(register.this, login.class));
+                                            finish();
 
-            }
-        });
 
+                                        }
+                                    });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,8 +111,9 @@ public  class register extends AppCompatActivity {
                     book.put("phoneno", phonenumber);
 
 
-                    store.collection("flight").document("registration")
-                            .set(book);
+                    store.collection("registration").document("details "+"->"+email).
+                            set(book);
+
 
 
                     registerUser(email, password);
@@ -152,8 +153,12 @@ public  class register extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialog,
                                                             int which) {
-                                            startActivity(new Intent(register.this, login.class));
-                                            finish();
+                                            String email = emailview.getText().toString().trim();
+                                            Intent intent;
+                                            intent = new Intent(register.this,login.class);
+                                            intent.putExtra("email", email);
+                                            startActivity(intent);
+
 
                                         }
                                     });
@@ -164,37 +169,9 @@ public  class register extends AppCompatActivity {
                             alertDialog.show();
 
 
-                        } else {
-
-                            progressDialog.dismiss();
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(register.this);
-
-
-                            builder1.setMessage("You have already registered.Please login");
-
-                            builder1.setTitle("");
-
-
-                            builder1.setCancelable(false);
-
-                            builder1.setPositiveButton(
-                                    "Cancel",
-                                    new DialogInterface
-                                            .OnClickListener() {
-
-                                        @Override
-                                        public void onClick(DialogInterface dialog,
-                                                            int which) {
-                                            startActivity(new Intent(register.this, home.class));
-                                            finish();
-
-                                        }
-                                    });
-
-
-                            AlertDialog alertDialog = builder1.create();
-                            alertDialog.show();
                         }
+
+
 
 
                     }

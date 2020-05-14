@@ -16,17 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
+
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +30,7 @@ public class gpay extends AppCompatActivity {
 
     EditText  name, upivirtualid,note;
     TextView amount;
-    Button send;
+    Button send,bypass;
     String TAG ="main";
     String price="";
     final int UPI_PAYMENT = 0;
@@ -48,30 +42,46 @@ public class gpay extends AppCompatActivity {
         setContentView(R.layout.activity_gpay);
 
            db=FirebaseFirestore.getInstance();
-        upivirtualid = findViewById(R.id.upi_id);
-        name = findViewById(R.id.naam);
+
         amount = findViewById(R.id.amount);
         note = findViewById(R.id.note);
 
       send=findViewById(R.id.send);
+        bypass=findViewById(R.id.bypass);
 
+    amount.setText(getIntent().getStringExtra("amount"));
 
-    amount.setText(getIntent().getStringExtra("price"));
+        bypass.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          String member= getIntent().getStringExtra("member");
+                                          String email= getIntent().getStringExtra("email");
+                                          String origin = getIntent().getStringExtra("origin");
+                                          String destination = getIntent().getStringExtra("destination");
+                                          String time = getIntent().getStringExtra("time");
+                                          Intent intent     = new Intent(gpay.this,checkin.class);
+                                          intent.putExtra("time", time);
+                                          intent.putExtra("origin", origin);
+                                          intent.putExtra("destination", destination);
+                                          intent.putExtra("member",member);
+                                          intent.putExtra("email",email);
+
+                                          startActivity(intent);
+                                      }
+                                  });
+
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Getting the values from the EditTexts
 
-                if (TextUtils.isEmpty(name.getText().toString().trim())){
-                    Toast.makeText(gpay.this," Name is invalid", Toast.LENGTH_SHORT).show();
-                }else if (TextUtils.isEmpty(upivirtualid.getText().toString().trim())){
-                    Toast.makeText(gpay.this," UPI ID is invalid", Toast.LENGTH_SHORT).show();
-                }else if (TextUtils.isEmpty(note.getText().toString().trim())) {
+
+                 if (TextUtils.isEmpty(note.getText().toString().trim())) {
+
                     Toast.makeText(gpay.this, " Note is invalid", Toast.LENGTH_SHORT).show();
                 }
                 else  {
-                    payUsingUpi(name.getText().toString(), upivirtualid.getText().toString(),
+                    payUsingUpi("vikrant singh", "vikrantsingh65238@okaxis",
                             note.getText().toString(), amount.getText().toString());
                 }
 
@@ -80,7 +90,7 @@ public class gpay extends AppCompatActivity {
     }
 
     void payUsingUpi(  String name,String upiId, String note, String amount) {
-        //    Log.e("main ", "name "+name +"--up--"+upiId+"--"+ note+"--"+amount);
+
         Uri uri = Uri.parse("upi://pay").buildUpon()
                 .appendQueryParameter("pa", upiId)
                 .appendQueryParameter("pn", name)
@@ -88,7 +98,7 @@ public class gpay extends AppCompatActivity {
                 .appendQueryParameter("tn", note)
                 .appendQueryParameter("am", amount)
                 .appendQueryParameter("cu", "INR")
-                //.appendQueryParameter("refUrl", "blueapp")
+
                 .build();
 
 
@@ -158,12 +168,24 @@ public class gpay extends AppCompatActivity {
             if (status.equals("success")) {
                 //Code to handle successful transaction here.
                 Toast.makeText(gpay.this, "Transaction successful.", Toast.LENGTH_SHORT).show();
+                String email=getIntent().getStringExtra("email");
+                String member= getIntent().getStringExtra("members");
+
+                String time = getIntent().getStringExtra("time");
+
+
                 Map<String, Object> book1 = new HashMap<>();
 
-                book1.put("status","yes");
 
-                db.collection("confirmation").document("paymentconfirm" + i++).set(book1);
+                book1.put("paymentconfirm","yes");
 
+                db.collection("registration").document("details"+"->"+email).set(book1);
+                Intent intent;
+                intent = new Intent(gpay.this,checkin.class);
+                intent.putExtra("time", time);
+                intent.putExtra("member",member);
+                intent.putExtra("email",email);
+                startActivity(intent);
 
             }
             else if(paymentCancel.equals("Payment cancelled by user.")) {
