@@ -42,7 +42,7 @@ public class checkin extends AppCompatActivity {
 
         store = FirebaseFirestore.getInstance();
 
-      //  String email = getIntent().getStringExtra("email");
+
 
 
         one.setOnClickListener(new View.OnClickListener() {
@@ -71,22 +71,16 @@ public class checkin extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
 
-
                                     String email = getIntent().getStringExtra("email");
-                                    String origin = getIntent().getStringExtra("origin");
-                                    String destination = getIntent().getStringExtra("destination");
-                                    String time= getIntent().getStringExtra("time");
+
                                     Map<String, Object> book = new HashMap<>();
 
                                     book.put("seat[0]", " 1-A");
-
-                                    store.collection("registration").document("details" + "->" + email).set(book);
-                                    Intent intent;
+                                    store.collection("registration").document("details "+"->"+email).
+                                            set(book);
+                                   Intent intent;
                                     intent = new Intent(checkin.this,boardingpass.class);
-                                    intent.putExtra("origin", origin);
-                                    intent.putExtra("time", time);
 
-                                    intent.putExtra("destination", destination);
                                     intent.putExtra("email", email);
                                     startActivity(intent);
 
@@ -148,11 +142,10 @@ public class checkin extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
 
-                                    String origin = getIntent().getStringExtra("origin");
-                                    String destination = getIntent().getStringExtra("destination");
+
 
                                     String email = getIntent().getStringExtra("email");
-                                    String time= getIntent().getStringExtra("time");
+
 
 
 
@@ -160,13 +153,12 @@ public class checkin extends AppCompatActivity {
 
                                     book.put("seat[1]", " 1-B");
 
-                                    store.collection("registration").document("details" + "->" + email).set(book);
+                                    store.collection("registration").document("details "+"->"+email).
+                                            set(book);
                                     Intent intent;
                                     intent = new Intent(checkin.this,boardingpass.class);
                                     intent.putExtra("email", email);
-                                    intent.putExtra("time", time);
-                                    intent.putExtra("origin", origin);
-                                    intent.putExtra("destination", destination);
+
                                     startActivity(intent);
 
 
@@ -225,22 +217,18 @@ public class checkin extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
-                                    String origin = getIntent().getStringExtra("origin");
-                                    String destination = getIntent().getStringExtra("destination");
 
-                                    String time= getIntent().getStringExtra("time");
                                     String email = getIntent().getStringExtra("email");
                                     Map<String, Object> book = new HashMap<>();
 
                                     book.put("seat[2]", " 2-A");
 
-                                    store.collection("registration ").document("details" + "->" + email).set(book);
+                                    store.collection("registration").document("details "+"->"+email).
+                                            set(book);
                                     Intent intent;
                                     intent = new Intent(checkin.this,boardingpass.class);
                                     intent.putExtra("email", email);
-                                    intent.putExtra("time", time);
-                                    intent.putExtra("origin", origin);
-                                    intent.putExtra("destination", destination);
+
                                     startActivity(intent);
 
                                 }
@@ -297,23 +285,19 @@ public class checkin extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
-                                    String origin = getIntent().getStringExtra("origin");
-                                    String destination = getIntent().getStringExtra("destination");
 
-                                    String time= getIntent().getStringExtra("time");
                                     String email = getIntent().getStringExtra("email");
                                     Map<String, Object> book = new HashMap<>();
 
                                     book.put("seat[3]", " 2-B");
 
-                                    store.collection("registration").document("details" + "->" + email).set(book);
+                                    store.collection("registration").document("details "+"->"+email).
+                                            set(book);
 
                                     Intent intent;
                                     intent = new Intent(checkin.this,boardingpass.class);
                                     intent.putExtra("email", email);
-                                    intent.putExtra("origin", origin);
-                                    intent.putExtra("time", time);
-                                    intent.putExtra("destination", destination);
+
                                     startActivity(intent);
 
                                 }

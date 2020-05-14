@@ -105,11 +105,10 @@ public class login extends AppCompatActivity {
 
                             p.dismiss();
                             FirebaseUser user= mauth.getCurrentUser();
-
-                      String email=emailinput;
+                            String email=  getIntent().getStringExtra("email");
                             Intent intent;
                             intent = new Intent(login.this,connect.class);
-                            intent.putExtra("email", email);
+                             intent.putExtra("email", email);
                             startActivity(intent);
                         } else {
                             p.dismiss();

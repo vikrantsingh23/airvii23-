@@ -54,16 +54,11 @@ public class gpay extends AppCompatActivity {
         bypass.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
-                                          String member= getIntent().getStringExtra("member");
+
                                           String email= getIntent().getStringExtra("email");
-                                          String origin = getIntent().getStringExtra("origin");
-                                          String destination = getIntent().getStringExtra("destination");
-                                          String time = getIntent().getStringExtra("time");
+
                                           Intent intent     = new Intent(gpay.this,checkin.class);
-                                          intent.putExtra("time", time);
-                                          intent.putExtra("origin", origin);
-                                          intent.putExtra("destination", destination);
-                                          intent.putExtra("member",member);
+
                                           intent.putExtra("email",email);
 
                                           startActivity(intent);

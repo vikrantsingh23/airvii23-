@@ -67,6 +67,7 @@ if(datetext.equals("11/5/2020")) {
 
                             String datetext = getIntent().getStringExtra("date");
                             String diffclass = getIntent().getStringExtra("classs");
+                            String email=document.getString("email");
 
                             origin.setText(document.getString("origin"));
 
@@ -83,8 +84,8 @@ if(datetext.equals("11/5/2020")) {
 
                             if (diffclass.equals("Economic class")) {
 
-                                price.setText(document.getString("economicprice"));
-                                price1.setText(document.getString("economicprice"));
+                                price.setText(document.getString("economyprice"));
+                                price1.setText(document.getString("economyprice"));
                             }
 
                             if (diffclass.equals("Business class")) {
@@ -258,8 +259,8 @@ if(datetext.equals("11/5/2020")) {
 
                                     if (diffclass.equals("Economic class")) {
 
-                                        price.setText(document.getString("economicprice"));
-                                        price1.setText(document.getString("economicprice"));
+                                        price.setText(document.getString("economyprice"));
+                                        price1.setText(document.getString("economyprice"));
                                     }
 
                                     if (diffclass.equals("Business class")) {
@@ -433,8 +434,8 @@ if(datetext.equals("11/5/2020")) {
 
                                     if (diffclass.equals("Economic class")) {
 
-                                        price.setText(document.getString("economicprice"));
-                                        price1.setText(document.getString("economicprice"));
+                                        price.setText(document.getString("economyprice"));
+                                        price1.setText(document.getString("economyprice"));
                                     }
 
                                     if (diffclass.equals("Business class")) {

@@ -45,10 +45,7 @@ public class boardingpass extends AppCompatActivity {
         seat = findViewById(R.id.seat);
 
         String email = getIntent().getStringExtra("email");
-        //String origin2 = getIntent().getStringExtra("origin");
-        //String destination2 = getIntent().getStringExtra("destination");
 
-//        String time= getIntent().getStringExtra("time");
         CollectionReference collectionreference = db.collection("registration");
         collectionreference
                 .whereEqualTo("email", email)
@@ -60,10 +57,11 @@ public class boardingpass extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
+                                String origin1 = document.getString("origin");
+                                String destination1 = document.getString("destination");
 
-                                String origin1 = getIntent().getStringExtra("origin");
-                                String destination1 = getIntent().getStringExtra("destination");
 
+                                String id = document.getString("id");
                                 origin.setText(origin1);
 
                                 destination.setText(destination1);
@@ -83,20 +81,11 @@ public class boardingpass extends AppCompatActivity {
                                 cla.setText(cla1);
 
 
-                            }
-                        }
-
-                    }
-
-                });
-
-        String origin = getIntent().getStringExtra("origin");
-        String destination = getIntent().getStringExtra("destination");
 
         CollectionReference collectionreference1 = db.collection("flight avilable");
         collectionreference1
-                .whereEqualTo("origin", origin).
-        whereEqualTo("destination", destination)
+                .whereEqualTo("origin", id)
+
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -105,7 +94,8 @@ public class boardingpass extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
 
-                                String flightno1 = document.getString("flightno");
+                                String flightno1;
+                                flightno1 = document.getString("flightno");
                                 flightno.setText(flightno1);
 
                             }
@@ -113,6 +103,13 @@ public class boardingpass extends AppCompatActivity {
                     }
                 });
 
+
+                            }
+                        }
+
+                    }
+
+                });
 
 
 

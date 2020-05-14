@@ -138,7 +138,7 @@ public class flightstatus extends AppCompatActivity {
                 collectionrefernce
                         .whereEqualTo("origin", origin)
                         .whereEqualTo("destination",destination)
-                        .whereEqualTo("day",date)
+
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
